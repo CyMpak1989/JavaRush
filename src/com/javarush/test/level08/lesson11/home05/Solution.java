@@ -22,9 +22,22 @@ public class Solution
     {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String s = reader.readLine();
+        String newS = "";
+        char ps = ' ';
+        char su;
+        for (int i = 0; i < s.length(); i++)
+        {
+            if (ps == ' ')
+            {
+                su = Character.toUpperCase(s.charAt(i));
+                newS = newS + su;
+            } else
+            {
+                newS = newS + s.charAt(i);
+            }
 
-        //напишите тут ваш код
+            ps = s.charAt(i);
+        }
+        System.out.println(newS);
     }
-
-
 }
