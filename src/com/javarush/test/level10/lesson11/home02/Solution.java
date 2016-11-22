@@ -12,7 +12,7 @@ public class Solution
         int b = 4;
         int c = 3;
         int e = 2;
-        double d = a + b/c/e;
+        double d = a + b/c/(float)e;
         System.out.println(d);
     }
 }
