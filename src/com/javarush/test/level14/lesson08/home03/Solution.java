@@ -27,17 +27,27 @@ public class Solution
         Person person = null;
         String key = null;
 
-        //тут цикл по чтению ключей, пункт 1
+        while (true)
         {
-        //создаем объект, пункт 2
-
-        doWork(person); //вызываем doWork
-
+        key = reader.readLine();
+        if (key.equals("user") || key.equals("looser") || key.equals("coder") || key.equals("proger"))
+        {
+            if (key.equals("user")) person = new Person.User();
+            else if (key.equals("looser")) person = new Person.Looser();
+            else if (key.equals("coder")) person = new Person.Coder();
+            else if (key.equals("proger")) person = new Person.Proger();
+            doWork(person);
+        } else {
+            break;
+        }
         }
     }
 
     public static void doWork(Person person)
     {
-        // пункт 3
+        if (person instanceof Person.User) ((Person.User) person).live();
+        else if (person instanceof Person.Looser) ((Person.Looser) person).doNothing();
+        else if (person instanceof Person.Coder) ((Person.Coder) person).coding();
+        else if (person instanceof Person.Proger) ((Person.Proger) person).enjoy();
     }
 }
