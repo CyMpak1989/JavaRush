@@ -1,4 +1,4 @@
-package com.javarush.test.level18.lesson03.task03;
+package com.javarush.test.level18.lesson03.task04;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-/* Самые частые байты
+/* Самые редкие байты
 Ввести с консоли имя файла
-Найти байт или байты с максимальным количеством повторов
+Найти байт или байты с минимальным количеством повторов
 Вывести их на экран через пробел
 Закрыть поток ввода-вывода
 */
@@ -23,30 +23,29 @@ public class Solution {
         while (fileInputStream.available() > 0)
         {
             int a = fileInputStream.read();
-             if (map.containsKey(a))
-             {
-                 int b = map.get(a);
-                 map.put(a, ++b);
-             } else {
-                 map.put(a, 1);
-             }
+            if (map.containsKey(a))
+            {
+                int b = map.get(a);
+                map.put(a, ++b);
+            } else {
+                map.put(a, 1);
+            }
         }
 
         fileInputStream.close();
-
-        int maxValue = 0;
+        int minValue = Integer.MAX_VALUE;
 
         for (Map.Entry<Integer, Integer> l : map.entrySet())
         {
-            if (maxValue < l.getValue())
+            if (minValue > l.getValue())
             {
-                maxValue = l.getValue();
+                minValue = l.getValue();
             }
         }
 
         for (Map.Entry<Integer, Integer> l : map.entrySet())
         {
-            if (l.getValue() == maxValue)
+            if (l.getValue() == minValue)
             {
                 System.out.print(l.getKey() + " ");
             }
